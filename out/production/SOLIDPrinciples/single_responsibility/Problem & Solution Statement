@@ -1,0 +1,21 @@
+Single-responsibility principle:
+- a class should do one thing and therefore it should have only a single reason to change.
+
+- Problem
+The first violation is the printInvoice method, which contains our printing logic.
+The SRP states that our class should only have a single reason to change, and that reason
+should be a change in the invoice calculation for our class.
+
+But in this architecture, if we wanted to change the printing format, we would need to change
+the class. This is why we should not have printing logic mixed with business logic in
+the same class.
+
+Don't just think in terms of writing to a file – it could be saving to a database, making
+an API call, or other stuff related to persistence.
+
+- Solution
+
+- We can create new classes for our printing and persistence logic so we will no longer need to
+modify the invoice class for those purposes.
+
+- We create 2 classes, InvoicePrinter and InvoicePersistence, and move the methods.

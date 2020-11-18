@@ -1,0 +1,30 @@
+
+- CommonBankAccount and CheckingAccount classes. CommonBankAccount represents any bank account
+within our simplified context. It has the methods deposit(), getBalance(), cashOut(), and income().
+
+- CheckingAccount is identical to the CommonBankAccount class, except for the income() method.
+
+
+-> Problem
+
+-A checking account has no income; it is only for receiving a salary.
+That way, we can solve this problem by extending the CommonBankAccount class,
+as shown above, and making the income() method throws an exception, right?
+
+- As expressed by our dear boss Michael Scott, this is not a good idea! If we were to try
+to access the income() method of all bank accounts in a loop, for example, and one of them is
+a CheckingAccount. Our application doesn't work because, for any checking account, an exception is
+thrown.
+
+-> Solution
+
+- In this scenario, we should refactor and use composition. Let’s create an AccountManager
+class, and this class will control the account’s financial movements.
+
+- The CommonBankAccount and CheckingAccount classes now have an AccountManager,
+ removing the unnecessary parent-child relationship between them.
+
+- Notice that in the refactored version of the CheckingAccount class, we don’t need to
+implement the income() method. We only use the manager in the behaviors that the class has.
+Uncle Bob explains that LSP is the enabling principle of the Open/Closed Principle since
+the possibility of substituting subtypes allows a module to be extensible without modifications.

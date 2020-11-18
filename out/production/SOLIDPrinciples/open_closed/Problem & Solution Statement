@@ -1,0 +1,28 @@
+-> Open-Close principle:
+
+- classes should be open for extension and closed to modification.
+
+- Modification means changing the code of an existing class, and extension means
+adding new functionality.
+
+- So what this principle wants to say is: We should be able to add new functionality
+without touching the existing code for the class. This is because whenever we modify
+the existing code, we are taking the risk of creating potential bugs.
+So we should avoid touching the tested and reliable (mostly) production code if possible.
+
+-> Problem
+
+- Let's say our boss came to us and said that they want invoices to be saved to a database
+so that we can search them easily. We think okay, this is easy peasy boss, just give me a second!
+
+- Unfortunately we, as the lazy developer for the book store, did not design the classes
+to be easily extendable in the future. So in order to add this feature, we have modified
+the InvoicePersistence class.
+
+-> Solution
+
+We change the type of InvoicePersistence to Interface and add a save method.
+Each persistence class will implement this save method.
+
+Now our persistence logic is easily extendable. If our boss asks us to add another database
+and have 2 different types of databases like MySQL and MongoDB, we can easily do that.

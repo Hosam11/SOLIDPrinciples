@@ -1,0 +1,31 @@
+-> Interface Segregation
+
+- Clients should not be forced to implement a function they do no need.
+
+- The principle states that many client-specific interfaces are better than one general-purpose
+interface. Clients should not be forced to implement a function they do no need.
+
+-> Problem
+
+- Our parking lot interface was composed of 2 things: Parking related logic
+(park car, unpark car, get capacity) and payment related logic.
+
+But it is too specific. Because of that, our FreeParking class was forced to implement
+payment-related methods that are irrelevant.
+
+-> Solution
+
+- separate or segregate the interfaces.
+
+interface ParkingLot
+interface PaidParkingLot extend ParkingLot
+interface FreeParkingLot extend ParkingLot
+interface HourlyFeeParkingLot extend PaidParkingLot
+interface ConstantFeeParkingLot extend PaidParkingLot
+
+- We've now separated the parking lot. With this new model, we can even go further and
+split the PaidParkingLot to support different types of payment.
+
+- Now our model is much more flexible, extendable, and the clients do not need to
+implement any irrelevant logic because we provide only parking-related functionality in
+the parking lot interface.
