@@ -2,10 +2,7 @@
 
 - subtypes should be replaceable by their base types
 
-- subclasses should be substitutable for
- their base classes.
-
- - subclasses should be substitutable for their base classes.
+- subclasses should be substitutable for their base classes.
 
 - This means that, given that class B is a subclass of class A, we should be able to pass an
 object of class B to any method that expects an object of class A and the method should not
